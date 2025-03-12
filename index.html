@@ -11,16 +11,15 @@
 </head>
 <body>
     <h1>Shopping Cart</h1>
-
     <button id="openPopup">Add Item</button>
-
     <table id="cart">
         <thead>
         <tr>
             <th>Item Name</th>
             <th>Category</th>
             <th>Price (THB)</th>
-            <th>Discount</th>
+            <th>Qty</th>
+            <th>Total</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -29,13 +28,31 @@
         </tbody>
     </table>
 
+    <h2>Discount</h2>
+    <label for="discount-amount">Customer Point : </label>
+    <input type="number" id="customer-point" class="customer-point" name="discount-point">
+    <div></div>
+    <button id="openDiscount">Add Discount</button>
+    <table id="discount">
+        <thead>
+        <tr>
+            <th>Campaigns </th>
+            <th>Category</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- รายการสินค้าจะถูกเพิ่มที่นี่ -->
+        </tbody>
+    </table>
     <h2>Total Price: <span id="total">0</span> THB</h2>
 
-    <!-- Popup Modal -->
+    <!-- Popup Item -->
     <div id="itemPopup" class="popup">
         <div class="popup-content">
             <span class="close">&times;</span>
-            <h2>Select an Item</h2>
+            <h2>Select an Item to Add to Cart</h2>
             <table id="item-table">
                 <thead>
                 <tr>
@@ -53,6 +70,48 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Popup discount -->
+    <div id="discountPopup" class="discount-popup">
+        <div class="discount-content">
+            <span class="discount-close">&times;</span>
+            <h2>Select an Dicsount</h2>
+            <div align="left">
+            <label for="discountSelect">Select Discount : </label>
+            <select id="discountSelect" class="discount-select">
+            </select>
+            </div>
+            <div align="left" class="discount-detail">
+                <div id="discount-amount">
+                    <label for="discount-amount">Amount : </label>
+                    <input type="number" id="discount-amount" name="discount-amount">
+                </div>
+                <div id="discount-percent" >
+                    <label for="discount-percent">Percentage : </label>
+                    <input type="number" id="discount-percent" name="discount-percent"> %
+                </div>
+                <div id="discount-category">
+                    <label for="discount-category">Category : </label>
+                    <select id="discount-category" class="discount-category">
+                    </select>
+                </div>
+                <div id="discount-point">
+                    <label for="discount-point">Points ( 1 point = 1 THB ) : </label>
+                    <input type="number" id="discount-point" name="discount-point">
+                    <br/>
+                    <br/>
+                    <label for="discount-point" class="maximumpoint">Points ( 1 point = 1 THB ) : </label>
+                </div>
+                <div id="discount-special">
+                    <label for="discount-special">Every </label>
+                    <input type="number" id="discount-special" class="discount-special" name="discount-special">  THB.
+                    <label for="discount-special">Discount </label>
+                    <input type="number" id="discount-special" class="discount-special" name="discount-special"> THB.
+                </div>
+            </div>
+            <button id="applyDiscount">Apply Discount</button>
         </div>
     </div>
     <script src="script.js"></script>

@@ -9,10 +9,24 @@ table {
     margin-top: 20px;
 }
 
+#discount{
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#discount th , #discount td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
+    font-size: 18px;
 }
 
 th {
@@ -24,8 +38,7 @@ button {
     padding: 5px 10px;
     cursor: pointer;
 }
-
-/* Modal CSS */
+/*popup CSS*/
 .popup {
     display: none;
     position: fixed;
@@ -46,6 +59,27 @@ button {
     text-align: center;
 }
 
+.discount-popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.discount-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 700px;
+    text-align: center;
+}
+
+
 .close {
     color: red;
     font-size: 24px;
@@ -53,3 +87,28 @@ button {
     cursor: pointer;
 }
 
+.discount-close {
+    color: red;
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+}
+
+.discount-select {
+    width: 250px;
+    height: 25px;
+}
+
+.discount-detail{
+    padding: 10px 0px;
+}
+
+.discount-detail div{
+    padding: 5px 0px;
+    display: none;
+}
+
+.discount-category {
+    width: 200px;
+    height: 20px;
+}
