@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "T-Shirt",
+    "category": "Clothing",
+    "price": 350
+  },
+  {
+    "id": 2,
+    "name": "Hat",
+    "category": "Accessories",
+    "price": 250
+  },
+  {
+    "id": 3,
+    "name": "Watch",
+    "category": "Electronics",
+    "price": 850
+  },
+  {
+    "id": 4,
+    "name": "Hoodie",
+    "category": "Clothing",
+    "price": 850
+  }
+]

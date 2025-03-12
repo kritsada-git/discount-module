@@ -1,0 +1,27 @@
+[
+  {
+  "id": 1,
+  "name": "Fixed Amount",
+  "category": 1
+  },
+  {
+    "id": 2,
+    "name": "Percentage Discount",
+    "category": 1
+  },
+  {
+    "id": 3,
+    "name": "Percentage Discount By Item Category",
+    "category": 2
+  },
+  {
+    "id": 4,
+    "name": "Discount By Points",
+    "category": 2
+  },
+  {
+    "id": 5,
+    "name": "Special Campaigns",
+    "category": 3
+  }
+]

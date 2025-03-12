@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "coupon",
+    "priority": 3
+  },
+  {
+    "id": 2,
+    "name": "On Top",
+    "priority": 2
+  },
+  {
+    "id": 3,
+    "name": "Seasonal",
+    "priority": 1
+  }
+]
