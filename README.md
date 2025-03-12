@@ -1,2 +1,2 @@
+Krtisada Chaithahan 
 # discount-module
-case of discount in many category
