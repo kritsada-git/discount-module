@@ -418,4 +418,50 @@ function clearInoput() {
 }
 
 
+$("input#discount-amount").on("blur", function () {
+	let min = 0;
+	let max = parseInt($('#total').text());
+	let value = parseInt($(this).val());
 
+	if (value < min) {
+		$(this).val(min);
+	} else if (value > max) {
+		$(this).val(max);
+	}
+});
+
+$("input#discount-percent").on("blur", function () {
+	let min = 0;
+	let max = 100;
+	let value = parseInt($(this).val());
+
+	if (value < min) {
+		$(this).val(min);
+	} else if (value > max) {
+		$(this).val(max);
+	}
+});
+
+$("input#discount-point").on("blur", function () {
+	let min = 0;
+	let max = parseInt($('input#customer-point').val()) || 0;
+	let value = parseInt($(this).val());
+
+	if (value < min) {
+		$(this).val(min);
+	} else if (value > max) {
+		$(this).val(max);
+	}
+});
+
+$("input#discount-percent").on("blur", function () {
+	let min = 0;
+	let max = 100;
+	let value = parseInt($(this).val());
+
+	if (value < min) {
+		$(this).val(min);
+	} else if (value > max) {
+		$(this).val(max);
+	}
+});

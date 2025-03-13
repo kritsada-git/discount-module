@@ -1,114 +1,326 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Prompt', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+}
+
+h1 {
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3b82f6;
+    font-weight: 600;
+}
+
+h2 {
+    color: #1e3a8a;
+    margin-top: 35px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+h2:before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background-color: #3b82f6;
+    margin-right: 10px;
+    border-radius: 3px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-#discount{
-    width: 50%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-#discount th , #discount td{
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
+    margin: 25px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 18px;
+    border: none;
+    padding: 14px 15px;
+    text-align: left;
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.92em;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tr:hover {
+    background-color: #eff6ff;
+    transition: background-color 0.3s ease;
 }
 
 button {
-    margin-top: 10px;
-    padding: 5px 10px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.25);
 }
-/*popup CSS*/
-.popup {
+
+button:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(59, 130, 246, 0.2);
+}
+
+button.addItem {
+    background-color: #10b981;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+button.addItem:hover {
+    background-color: #059669;
+}
+
+button.deleteItem,
+button.deleteDiscountItem {
+    background-color: #ef4444;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+button.deleteItem:hover,
+button.deleteDiscountItem:hover {
+    background-color: #dc2626;
+}
+
+#openPopup, #openDiscount {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 10px 16px;
+}
+
+#openPopup:before {
+    content: "+";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#openDiscount:before {
+    content: "+";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: 120px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    font-size: 14px;
+}
+
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.customer-point {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.customer-point label {
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.customer-point input {
+    flex: 0 0 auto;
+}
+
+/* Popup Styles */
+.popup, .discount-popup {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
+    overflow-y: auto;
 }
 
-.popup-content {
+.popup-content, .discount-content {
     background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 700px;
-    text-align: center;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: popupFadeIn 0.3s;
+    overflow-x: auto;
 }
 
-.discount-popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+@keyframes popupFadeIn {
+    from {opacity: 0; transform: translateY(-30px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
-.discount-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 700px;
-    text-align: center;
-}
-
-
-.close {
-    color: red;
-    font-size: 24px;
+.close, .discount-close {
+    color: #ef4444;
+    font-size: 28px;
     float: right;
     cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: -10px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
-.discount-close {
-    color: red;
-    font-size: 24px;
-    float: right;
-    cursor: pointer;
+.close:hover, .discount-close:hover {
+    color: #dc2626;
+    background-color: rgba(239, 68, 68, 0.1);
+    transform: rotate(90deg);
 }
 
-.discount-select {
+#total {
+    font-weight: 600;
+    color: #3b82f6;
+    font-size: 1.3em;
+}
+
+/* Discount Detail Styles */
+.discount-detail {
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #e2e8f0;
+}
+
+.discount-detail div {
+    margin-bottom: 15px;
+}
+
+.discount-detail label {
+    display: inline-block;
+    width: 150px;
+    font-weight: 500;
+}
+
+#discount-category, #discountSelect {
     width: 250px;
-    height: 25px;
+    text-align: left;
 }
 
-.discount-detail{
-    padding: 10px 0px;
+.maximumpoint {
+    display: block;
+    color: #6366f1;
+    margin-top: 5px;
+    font-size: 0.9em;
 }
 
-.discount-detail div{
-    padding: 5px 0px;
-    display: none;
+#applyDiscount {
+    background-color: #6366f1;
+    margin-top: 10px;
+    padding: 10px 20px;
 }
 
-.discount-category {
-    width: 200px;
-    height: 20px;
+#applyDiscount:hover {
+    background-color: #4f46e5;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    .popup-content, .discount-content {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .discount-detail label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    input[type="number"], select {
+        width: 100%;
+    }
+
+    .customer-point {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* WebKit input spinner removal */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Font import for Thai language support */
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap');
