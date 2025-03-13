@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "name": "coupon",
-    "priority": 3
+    "name": "Coupon",
+    "priority": 1
   },
   {
     "id": 2,
@@ -12,6 +12,6 @@
   {
     "id": 3,
     "name": "Seasonal",
-    "priority": 1
+    "priority": 3
   }
 ]
