@@ -48,8 +48,9 @@ discount-module/
 
 1. **Setup**
    - Clone the repository
-   - Open `index.html` in a web browser
-
+   - Serve the project using a local web server (e.g., Live Server in VS Code, Python's `http.server`, or Node.js' `http-server`)  
+   - Open `index.html` in a web browser via the local server
+    
 2. **Adding Items**
    - Click "Add Item" button
    - Select quantity for desired products
